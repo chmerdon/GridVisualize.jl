@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.8.1] - 2024-11-02
+- update links after move to WIAS-PDELib org
 
 ## [1.8.0] - 2024-09-29
 

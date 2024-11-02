@@ -35,7 +35,7 @@ function mkdocs()
              doctest = false,
              clean = false,
              authors = "J. Fuhrmann",
-             repo = "https://github.com/j-fu/GridVisualize.jl",
+             repo = "https://github.com/WIAS-PDELib/GridVisualize.jl",
              pages = [
                  "Home" => "index.md",
                  "Public API" => "api.md",
@@ -46,4 +46,4 @@ end
 
 mkdocs()
 
-deploydocs(; repo = "github.com/j-fu/GridVisualize.jl.git", devbranch = "main")
+deploydocs(; repo = "github.com/WIAS-PDELib/GridVisualize.jl.git", devbranch = "main")
