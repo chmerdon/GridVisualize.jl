@@ -1,4 +1,4 @@
-[![Build status](https://github.com/WIAS-PDELib/GridVisualize.jl/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/WIAS-PDELib/GridVisualize.jl/actions/workflows/ci.yml?query=branch%3Amain)
+[![Build status](https://github.com/WIAS-PDELib/GridVisualize.jl/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/WIAS-PDELib/GridVisualize.jl/actions/workflows/ci.yml?query=branch%3Amain)
 [![](https://img.shields.io/badge/docs-stable-blue.svg)](https://WIAS-PDELib.github.io/GridVisualize.jl/stable)
 [![](https://img.shields.io/badge/docs-dev-blue.svg)](https://WIAS-PDELib.github.io/GridVisualize.jl/dev)
 
