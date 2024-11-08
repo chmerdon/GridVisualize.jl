@@ -494,16 +494,18 @@ function makescene_grid(ctx)
     GL = XMakie.GridLayout(ctx[:figure])
     GL[1, 1] = ctx[:scene]
     ncol = length(ctx[:cmap])
-    nbcol = length(ctx[:cmap])
+    nbcol = length(ctx[:bcmap])
     # fontsize=0.5*ctx[:fontsize],ticklabelsize=0.5*ctx[:fontsize]
     if ctx[:colorbar] == :vertical
         GL[1, 2] = XMakie.Colorbar(ctx[:figure];
                                    colormap = XMakie.cgrad(ctx[:cmap]; categorical = true),
-                                   limits = (1, ncol),
+                                   limits = (0.5, ncol+0.5),
+                                   ticks = 1:ncol,
                                    width = 15,)
         GL[1, 3] = XMakie.Colorbar(ctx[:figure];
                                    colormap = XMakie.cgrad(ctx[:bcmap]; categorical = true),
-                                   limits = (1, nbcol),
+                                   limits = (0.5, nbcol+0.5),
+                                   ticks = 1:nbcol,
                                    width = 15,)
     elseif ctx[:colorbar] == :horizontal
         GL[2, 1] = XMakie.Colorbar(ctx[:figure];
