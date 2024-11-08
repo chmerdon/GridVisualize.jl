@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.8.2] - 2024-11-08
+
+### Fixed
+
+- Fix GLMakie region colorbar in 2D/3D Plots (#23)
+
 ## [1.8.1] - 2024-11-02
 - update links after move to WIAS-PDELib org
 
