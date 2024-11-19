@@ -8,7 +8,7 @@
 #  `WGLMakie` and `CairoMakie` work in principle but in the moment don't deliver
 #  all necessary functionality. For `Plots` we miss the possibility to work with triangle meshes (this is under development, though)
 # 
-# Also supported is [`VTKView`](https://github.com/j-fu/VTKView.jl)  which is exeprimental and works only on linux.
+# Also supported is [`VTKView`](https://github.com/j-fu/VTKView.jl)  which is experimental and works only on linux.
 #
 #
 # ## Grid plots

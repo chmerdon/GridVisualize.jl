@@ -3,10 +3,10 @@
 reveal=true anstelle von show=true ?
 reveal(p)
 
-2D Arrays in 1D plot wie in plts: Label als array, color als array.
-Das geht auch einfach in Makie
+2D Arrays in 1D plot as in plts: Label as array, color as array.
+This also works in Makie
 
-pass=(...): kwargs für plotter
+pass=(...): kwargs for plotter
 =#
 
 initialize!(p, ::Type{PlotsType}) = nothing

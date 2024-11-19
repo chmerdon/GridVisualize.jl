@@ -27,7 +27,7 @@ streamplot(grid, vectorfunction,Plotter=GLMakie)
 
 This works for  1/2/3D grids and either a function  represented by its
 values on  the nodes of the  grid, or a scalar  function of 1, 2  or 3
-variables, respectively. Vector and stream plots are currenly available for 2D only.
+variables, respectively. Vector and stream plots are currently available for 2D only.
 
 The `grid` argument should be an `ExtendableGrid` as defined by the [ExtendableGrids.jl](https://github.com/WIAS-PDELib/ExtendableGrids.jl) package.
 Instead of `grid`, the following arguments can be passed in order to describe a grid (which then is internally created on-the-fly):
