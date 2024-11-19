@@ -64,7 +64,7 @@ Some updates, fixes:
 
 - Prevent PyPlot from normalizing quiver vectors
 
-- Pin CairoMakie vesion due to https://github.com/MakieOrg/Makie.jl/issues/3440
+- Pin CairoMakie version due to https://github.com/MakieOrg/Makie.jl/issues/3440
 
 - Add warnings for functionality not implemented in Plots
 

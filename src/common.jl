@@ -305,7 +305,7 @@ function vectorsample(grid::ExtendableGrid{Tv, Ti}, v;
 
                     # Check positivity of bc coordinates with some slack for
                     # round-off errors. Therefore a point may be found in two
-                    # neigboring triangles. Constraining points to the raster ensures
+                    # neighboring triangles. Constraining points to the raster ensures
                     # that only the last of them is taken.
                     if all(x -> x > -tol, λ)
                         # Interpolate vector value

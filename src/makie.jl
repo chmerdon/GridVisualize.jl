@@ -399,7 +399,7 @@ function scalarplot!(ctx, TP::Type{MakieType}, ::Type{Val{1}}, grids, parentgrid
                                 markersize = ctx[:markersize],)
             end
 
-            # Draw  dummy line with marker on top ot the first
+            # Draw  dummy line with marker on top of the first
             # marker position already drawn in order to
             # get the proper legend entry
             if ctx[:label] != ""
@@ -511,12 +511,12 @@ function makescene_grid(ctx)
         GL[2, 1] = XMakie.Colorbar(ctx[:figure];
                                    colormap = XMakie.cgrad(ctx[:cmap]; categorical = true),
                                    limits = (1, ncol),
-                                   heigth = 15,
+                                   height = 15,
                                    vertical = false,)
         GL[3, 1] = XMakie.Colorbar(ctx[:figure];
                                    colormap = XMakie.cgrad(ctx[:bcmap]; categorical = true),
                                    limits = (1, nbcol),
-                                   heigth = 15,
+                                   height = 15,
                                    vertical = false,)
     end
     GL

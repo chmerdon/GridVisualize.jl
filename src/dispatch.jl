@@ -202,7 +202,7 @@ vis=GridVisualizer(Plotter=PyPlot, layout=(2,2)
 ...plot!(vis[1,2], ...)
 ```
 
-A `...plot`  command just implicitely creates a plot context:
+A `...plot`  command just implicitly creates a plot context:
 
 ```julia
 gridplot(grid, Plotter=PyPlot) 
@@ -329,7 +329,7 @@ function default_plot_kwargs()
                                            :offset => Pair(:default, "Offset of quiver grid"),
                                            :vscale => Pair(1.0, "Vector field scale for quiver grid"),
                                            :vconstant => Pair(false, "Set all arrow length constant in vector plot"),
-                                           :vnormalize => Pair(true, "Normalize vector field befor scaling"),
+                                           :vnormalize => Pair(true, "Normalize vector field before scaling"),
                                            :interior => Pair(true, "3D plot interior of grid"),
                                            :xplanes => Pair([prevfloat(Inf)], "3D x plane positions or number thereof"),
                                            :yplanes => Pair([prevfloat(Inf)], "3D y plane positions or number thereof"),
@@ -843,7 +843,7 @@ end
 """
 $(TYPEDSIGNATURES)
 
-Finish and show plot. Same as setting `:reveal=true` or `:show=true` in last plot statment
+Finish and show plot. Same as setting `:reveal=true` or `:show=true` in last plot statement
 for a context.
 """
 reveal(visualizer::GridVisualizer) = reveal(visualizer, plottertype(visualizer.Plotter))
