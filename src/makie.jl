@@ -496,28 +496,30 @@ function makescene_grid(ctx)
     ncol = length(ctx[:cmap])
     nbcol = length(ctx[:bcmap])
     # fontsize=0.5*ctx[:fontsize],ticklabelsize=0.5*ctx[:fontsize]
-    if ctx[:colorbar] == :vertical
-        GL[1, 2] = XMakie.Colorbar(ctx[:figure];
-                                   colormap = XMakie.cgrad(ctx[:cmap]; categorical = true),
-                                   limits = (0.5, ncol+0.5),
-                                   ticks = 1:ncol,
-                                   width = 15,)
-        GL[1, 3] = XMakie.Colorbar(ctx[:figure];
-                                   colormap = XMakie.cgrad(ctx[:bcmap]; categorical = true),
-                                   limits = (0.5, nbcol+0.5),
-                                   ticks = 1:nbcol,
-                                   width = 15,)
-    elseif ctx[:colorbar] == :horizontal
-        GL[2, 1] = XMakie.Colorbar(ctx[:figure];
-                                   colormap = XMakie.cgrad(ctx[:cmap]; categorical = true),
-                                   limits = (1, ncol),
-                                   height = 15,
-                                   vertical = false,)
-        GL[3, 1] = XMakie.Colorbar(ctx[:figure];
-                                   colormap = XMakie.cgrad(ctx[:bcmap]; categorical = true),
-                                   limits = (1, nbcol),
-                                   height = 15,
-                                   vertical = false,)
+    if ctx[:show_colorbar]
+        if ctx[:colorbar] == :vertical
+            GL[1, 2] = XMakie.Colorbar(ctx[:figure];
+                                    colormap = XMakie.cgrad(ctx[:cmap]; categorical = true),
+                                    limits = (0.5, ncol+0.5),
+                                    ticks = 1:ncol,
+                                    width = 15,)
+            GL[1, 3] = XMakie.Colorbar(ctx[:figure];
+                                    colormap = XMakie.cgrad(ctx[:bcmap]; categorical = true),
+                                    limits = (0.5, nbcol+0.5),
+                                    ticks = 1:nbcol,
+                                    width = 15,)
+        elseif ctx[:colorbar] == :horizontal
+            GL[2, 1] = XMakie.Colorbar(ctx[:figure];
+                                    colormap = XMakie.cgrad(ctx[:cmap]; categorical = true),
+                                    limits = (1, ncol),
+                                    height = 15,
+                                    vertical = false,)
+            GL[3, 1] = XMakie.Colorbar(ctx[:figure];
+                                    colormap = XMakie.cgrad(ctx[:bcmap]; categorical = true),
+                                    limits = (1, nbcol),
+                                    height = 15,
+                                    vertical = false,)
+        end
     end
     GL
 end

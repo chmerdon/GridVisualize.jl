@@ -351,7 +351,8 @@ function default_plot_kwargs()
                                            :dim => Pair(1, "Data dimension for PlutoVista plot"),
                                            :regions => Pair(:all, "List of regions to plot"),
                                            :species => Pair(1, "Number of species to plot or number of species in regions"),
-                                           :spacing => Pair(nothing, "Removed from API"))
+                                           :spacing => Pair(nothing, "Removed from API"),
+                                           :show_colorbar => Pair(true, "Show color bar next to grid plots"))
 end
 
 #
