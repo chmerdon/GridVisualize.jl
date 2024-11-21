@@ -363,19 +363,6 @@ function scalarplot!(ctx, TP::Type{MakieType}, ::Type{Val{1}}, grids, parentgrid
     end
 
     function update_lines(ctx, newrange)
-	    # No uniform method in Colors to create a color from either tuple or symbol
-        rgbcol = Colors.RGB{Float64}(0,0,0)
-        if ctx[:color] isa Tuple{Float64,Float64,Float64}
-            Base.depwarn(
-              "Setting custom colors as `Tuple`, e.g. `color=(0.,0.,1.)` will be removed in the next major release. "*
-              "Please use color=RGB(0.,0.,1.) instead.",
-              :update_lines,
-            )
-            rgbcol = RGB(ctx[:color][1],ctx[:color][2],ctx[:color][3])
-        else
-            rgbcol = parse(Colors.RGB{Float64},ctx[:color])
-        end
-
         if ctx[:markershape] == :none
             #line without marker
             for l in newrange
@@ -383,7 +370,7 @@ function scalarplot!(ctx, TP::Type{MakieType}, ::Type{Val{1}}, grids, parentgrid
                               map(a -> a, ctx[:lines][l]);
                               linestyle = ctx[:linestyle],
                               linewidth = ctx[:linewidth],
-                              color = rgbcol)
+                              color = rgbcolor(ctx[:color]))
             end
             if ctx[:label] != ""
                 XMakie.scatterlines!(ctx[:scene],
@@ -391,7 +378,7 @@ function scalarplot!(ctx, TP::Type{MakieType}, ::Type{Val{1}}, grids, parentgrid
                                      linestyle = ctx[:linestyle],
                                      linewidth = ctx[:linewidth],
                                      markersize = 0.1,
-                                     color = rgbcol,
+                                     color = rgbcolor(ctx[:color]),
                                      label = ctx[:label],)
             end
         else
@@ -402,12 +389,12 @@ function scalarplot!(ctx, TP::Type{MakieType}, ::Type{Val{1}}, grids, parentgrid
                 XMakie.lines!(ctx[:scene],
                               map(a -> a, ctx[:lines][l]);
                               linestyle = ctx[:linestyle],
-                              color = rgbcol,
+                              color = rgbcolor(ctx[:color]),
                               linewidth = ctx[:linewidth],)
                 # draw markers without label
                 XMakie.scatter!(ctx[:scene],
                                 map(a -> a[1:ctx[:markevery]:end], ctx[:lines][l]);
-                                color = rgbcol,
+                                color = rgbcolor(ctx[:color]),
                                 marker = ctx[:markershape],
                                 markersize = ctx[:markersize],)
             end
@@ -422,8 +409,8 @@ function scalarplot!(ctx, TP::Type{MakieType}, ::Type{Val{1}}, grids, parentgrid
                                      linewidth = ctx[:linewidth],
                                      marker = ctx[:markershape],
                                      markersize = ctx[:markersize],
-                                     markercolor = rgbcol,
-                                     color = rgbcol,
+                                     markercolor = rgbcolor(ctx[:color]),
+                                     color = rgbcolor(ctx[:color]),
                                      label = ctx[:label],)
             end
         end

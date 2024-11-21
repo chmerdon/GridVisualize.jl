@@ -669,7 +669,7 @@ function vectorplot!(ctx, TP::Type{PyPlotType}, ::Type{Val{2}}, grid, func)
     # For the kwargs, see 
     # https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.quiver.html
     # Without them, PyPlot itself normalizes
-    ax.quiver(qc[1, :], qc[2, :], qv[1, :], qv[2, :]; color = ctx[:color], scale = 1, angles = "xy", scale_units = "xy")
+    ax.quiver(qc[1, :], qc[2, :], qv[1, :], qv[2, :]; color = rgbtuple(ctx[:color]), scale = 1, angles = "xy", scale_units = "xy")
     ax.set_xlabel(ctx[:xlabel])
     ax.set_ylabel(ctx[:ylabel])
 
@@ -724,7 +724,7 @@ function streamplot!(ctx, TP::Type{PyPlotType}, ::Type{Val{2}}, grid, func)
 
     X, Y = meshgrid(rc)
 
-    ax.streamplot(X, Y, rv[1, :, :, 1]', rv[2, :, :, 1]'; color = ctx[:color], density = 1)
+    ax.streamplot(X, Y, rv[1, :, :, 1]', rv[2, :, :, 1]'; color = rgbtuple(ctx[:color]), density = 1)
     ax.set_xlabel(ctx[:xlabel])
     ax.set_ylabel(ctx[:ylabel])
 
