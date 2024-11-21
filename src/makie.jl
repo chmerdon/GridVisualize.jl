@@ -363,9 +363,14 @@ function scalarplot!(ctx, TP::Type{MakieType}, ::Type{Val{1}}, grids, parentgrid
     end
 
     function update_lines(ctx, newrange)
-	# No uniform method in Colors to create a color from either tuple or symbol
+	    # No uniform method in Colors to create a color from either tuple or symbol
         rgbcol = Colors.RGB{Float64}(0,0,0)
         if ctx[:color] isa Tuple{Float64,Float64,Float64}
+            Base.depwarn(
+              "Setting custom colors as `Tuple`, e.g. `color=(0.,0.,1.)` will be removed in the next major release. "*
+              "Please use color=RGB(0.,0.,1.) instead.",
+              :update_lines,
+            )
             rgbcol = RGB(ctx[:color][1],ctx[:color][2],ctx[:color][3])
         else
             rgbcol = parse(Colors.RGB{Float64},ctx[:color])
