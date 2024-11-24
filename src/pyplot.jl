@@ -231,18 +231,20 @@ function gridplot!(ctx, TP::Type{PyPlotType}, ::Type{Val{2}}, grid)
                          cmap = PyPlot.ColorMap(cmap, length(cmap)),
                          vmin = 1.0,
                          vmax = length(cmap),)
-    if ctx[:colorbar] == :horizontal
-        cbar = fig.colorbar(cdata;
-                            ax = ax,
-                            ticks = collect(1:length(cmap)),
-                            orientation = "horizontal",)
-    end
+    if ctx[:show_colorbar]
+        if ctx[:colorbar] == :horizontal
+            cbar = fig.colorbar(cdata;
+                                ax = ax,
+                                ticks = collect(1:length(cmap)),
+                                orientation = "horizontal",)
+        end
 
-    if ctx[:colorbar] == :vertical
-        cbar = fig.colorbar(cdata;
-                            ax = ax,
-                            ticks = collect(1:length(cmap)),
-                            orientation = "vertical",)
+        if ctx[:colorbar] == :vertical
+            cbar = fig.colorbar(cdata;
+                                ax = ax,
+                                ticks = collect(1:length(cmap)),
+                                orientation = "vertical",)
+        end
     end
 
     ax.triplot(tridat...; color = "k", linewidth = ctx[:linewidth])
