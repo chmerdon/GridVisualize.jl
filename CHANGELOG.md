@@ -1,5 +1,11 @@
 # Changelog
 
+## [unreleased]
+
+### Added
+
+- `gridplot` with `PyPlot` has now a color bar with annotation `boundary regions`
+
 ## [1.9.0] - 2024-11-25
 
 ### Added

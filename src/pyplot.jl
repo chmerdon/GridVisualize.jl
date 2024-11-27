@@ -236,30 +236,45 @@ function gridplot!(ctx, TP::Type{PyPlotType}, ::Type{Val{2}}, grid)
     brflag = ones(Bool, nbfaceregions)
     ax.set_aspect(ctx[:aspect])
     tridat = tridata(grid, ctx[:gridscale])
-    cmap = region_cmap(max(ncellregions, 5))
-    cdata = ax.tripcolor(
-        tridat...;
-        facecolors = cellcolors(grid, ctx[:cellcoloring]),
-        cmap = PyPlot.ColorMap(cmap, length(cmap)),
-        vmin = 1.0,
-        vmax = length(cmap),
+    # PyPlot.ColorMap cannot handle n ≤ 1, TODO: use single color instead of a color map
+    cmap = region_cmap(max(2, ncellregions))
+    bcmap = bregion_cmap(max(2, nbfaceregions))
+
+    cell_colors = cellcolors(grid, ctx[:cellcoloring])
+
+    # dummy plot to get a correct color bar for the boundary data
+    bcdata = ax.tripcolor(
+        tridat[1][1:3], tridat[2][1:3]; # extract a single point from the original triangulation
+        facecolors = cell_colors[1:1],  # only one triangle!
+        cmap = PyPlot.ColorMap(bcmap, length(bcmap)),
+        vmin = 0.5,
+        vmax = length(bcmap) + 0.5,
     )
+
+    ax.tripcolor(
+        tridat...;
+        facecolors = cell_colors,
+        cmap = PyPlot.ColorMap(cmap, length(cmap)),
+    )
+
     if ctx[:show_colorbar]
         if ctx[:colorbar] == :horizontal
             cbar = fig.colorbar(
-                cdata;
+                bcdata;
                 ax = ax,
-                ticks = collect(1:length(cmap)),
+                ticks = collect(1:length(bcmap)),
                 orientation = "horizontal",
+                label = "boundary regions",
             )
         end
 
         if ctx[:colorbar] == :vertical
             cbar = fig.colorbar(
-                cdata;
+                bcdata;
                 ax = ax,
-                ticks = collect(1:length(cmap)),
+                ticks = collect(1:length(bcmap)),
                 orientation = "vertical",
+                label = "boundary regions",
             )
         end
     end
