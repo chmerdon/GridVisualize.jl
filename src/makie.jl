@@ -538,6 +538,7 @@ function makescene_grid(ctx)
                 limits = (0.5, ncol + 0.5),
                 ticks = 1:ncol,
                 width = 15,
+                label = "cell regions",
             )
             GL[1, 3] = XMakie.Colorbar(
                 ctx[:figure];
@@ -545,6 +546,7 @@ function makescene_grid(ctx)
                 limits = (0.5, nbcol + 0.5),
                 ticks = 1:nbcol,
                 width = 15,
+                label = "boundary regions",
             )
         elseif ctx[:colorbar] == :horizontal
             GL[2, 1] = XMakie.Colorbar(
@@ -553,6 +555,7 @@ function makescene_grid(ctx)
                 limits = (1, ncol),
                 height = 15,
                 vertical = false,
+                label = "cell regions",
             )
             GL[3, 1] = XMakie.Colorbar(
                 ctx[:figure];
@@ -560,6 +563,7 @@ function makescene_grid(ctx)
                 limits = (1, nbcol),
                 height = 15,
                 vertical = false,
+                label = "boundary regions",
             )
         end
     end
