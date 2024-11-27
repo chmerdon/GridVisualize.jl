@@ -4,7 +4,7 @@
 
 ### Added
 
-- `gridplot` with `PyPlot` has now a color bar with annotation `boundary regions`
+- `gridplot` with `GLMakie` and `PyPlot` now annotates the color bars with `boundary regions` and `cell regions`
 
 ## [1.9.0] - 2024-11-25
 
